@@ -104,9 +104,10 @@ class TestProductModel(unittest.TestCase):
     #
     # ADD YOUR TEST CASES HERE
     #
+
     def test_read_a_product(self):
         """This needs to verify if the reading functionality of the Product class is working correctly"""
-        product= ProductFactory()
+        product = ProductFactory()
         product.id = None
         product.create()
         self.assertIsNotNone(product.id)
@@ -118,7 +119,7 @@ class TestProductModel(unittest.TestCase):
 
     def test_update_a_product(self):
         """This needs to verify if the update functionality of the Product class is working correctly"""
-        product= ProductFactory()
+        product = ProductFactory()
         product.id = None
         product.create()
         self.assertIsNotNone(product.id)
@@ -132,16 +133,14 @@ class TestProductModel(unittest.TestCase):
         self.assertEqual(products[0].id, original_id)
         self.assertEqual(products[0].description, "testing")
 
-
     def test_delete_a_product(self):
         """This needs to verify if the delete functionality of the Product class is working correctly"""
-        product= ProductFactory()
+        product = ProductFactory()
         product.create()
         self.assertEqual(len(Product.all()), 1)
         product.delete()
         self.assertEqual(len(Product.all()), 0)
 
-    
     def test_list_all_products(self):
         """This needs to verify that products are being listed"""
         products = Product.all()
@@ -164,8 +163,6 @@ class TestProductModel(unittest.TestCase):
         for product in found:
             self.assertEqual(product.name, name)
 
-
-
     def test_find_by_availability(self):
         """Product should be found by availability"""
         products = ProductFactory.create_batch(10)
@@ -177,9 +174,6 @@ class TestProductModel(unittest.TestCase):
         self.assertEqual(found.count(), count)
         for product in found:
             self.assertEqual(product.available, available)
-
-
-
 
     def test_find_by_category(self):
         """Product should be found by category"""
